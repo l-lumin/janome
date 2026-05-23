@@ -14,47 +14,40 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
+    - uses: astral-sh/setup-uv@v5
     - name: Test
       run: |
-        pip install --upgrade pip
-        pip install -r requirements-dev.txt
-        python setup.py develop
-        python -m unittest discover tests/
+        uv sync --group dev
+        uv run python -m unittest discover tests/
 
   check:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - uses: astral-sh/setup-uv@v5
     - name: Unit tests for coverage
       run: |
-        pip install --upgrade pip
-        pip install -r requirements-dev.txt
-        python setup.py develop
-        python -m unittest discover tests/
-        coverage run -m unittest discover tests
+        uv sync --group dev
+        uv run coverage run -m unittest discover tests
     - name: Coveralls
       uses: AndreMiras/coveralls-python-action@develop
       with:
         parallel: true
         flag-name: Unit Test
     - name: Lint with flake8
-      run: |
-        pip install flake8
-        python -m flake8 ./janome
+      run: uv run python -m flake8 ./src/janome
     - name: Lint with mypy
-      run: |
-        pip install mypy
-        python -m mypy ./janome/*.py
+      run: uv run python -m mypy ./src/janome
 
   coveralls_finish:
     needs: check
