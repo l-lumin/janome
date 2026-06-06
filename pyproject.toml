@@ -37,8 +37,10 @@ path = "src/janome/version.py"
 pattern = "^JANOME_VERSION = '(?P<version>.+)'$"
 
 [tool.hatch.build.targets.sdist]
-packages = ["src/janome"]
-include = ["ipadic/sysdic.zip"]
+include = [
+    "src/janome/**",
+    "ipadic/sysdic.zip",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/janome"]
