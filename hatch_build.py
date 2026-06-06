@@ -6,6 +6,9 @@ from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 class CustomBuildHook(BuildHookInterface):
     def initialize(self, version, build_data):
+        if self.target_name != 'wheel':
+            return
+
         dicdir = 'ipadic'
         zip_path = os.path.join(dicdir, 'sysdic.zip')
         extract_target = Path("src/janome")
@@ -21,4 +24,4 @@ class CustomBuildHook(BuildHookInterface):
             for path in target_sysdic.rglob('*'):
                 if path.is_file():
                     rel = path.relative_to('src')
-                    build_data.setdefault('force_include', {})[str(path)] = str(rel).replace('\\', '/')
+                    build_data.setdefault('force_include', {})[path.as_posix()] = rel.as_posix()
