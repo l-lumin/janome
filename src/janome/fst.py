@@ -37,7 +37,7 @@ FLAG_ARC_HAS_OUTPUT = 1 << 4        # 16
 FLAG_ARC_HAS_FINAL_OUTPUT = 1 << 5  # 32
 
 # all characters
-CHARS = set()
+CHARS: set[int] = set()
 
 
 def set_fst_log_level(level):

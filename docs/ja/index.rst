@@ -44,7 +44,7 @@ API リファレンス
 動作に必要なソフトウェア
 --------------------------
 
-Python 3.7+ インタプリタ
+Python 3.10+ インタプリタ
 
 最新バージョン
 -----------------
@@ -63,7 +63,7 @@ PyPI
 
   $ pip install janome
 
-.. note:: 
+.. note::
 
   pip でのビルド時に 500 ~ 600 MB 程度のメモリを必要とします。利用可能なメモリ容量にご注意ください。（バージョン 0.2.6 より，RAM 2GB 程度のマシンや 32 bit 環境でもインストールできるようになりました。）
 
@@ -155,7 +155,7 @@ userdic.csv ::
 **[参考リンク]**
 
 * `データ解析、プログラミング学習中: Janomeのユーザー辞書を作る <http://eneprog.blogspot.com/2018/08/janomepython.html>`_ (ユーザー辞書ファイルの作成方法)
-  
+
   * 補足: こちらの記事では左/右文脈ID に -1 を指定していますが，`MeCab: 単語の追加方法 <http://taku910.github.io/mecab/dic.html>`_ に記載のように，MeCab IPADIC に含まれる ``left-id.def`` (または ``right-id.def``) から該当する品詞IDを選ぶ (例：「名詞,固有名詞,一般」なら 1288) とコスト計算がより適切になるでしょう。
 
 * `データ解析、プログラミング学習中: エネルギー基本計画の特徴を見てみる。その4 複合語を考慮してwordcloud <http://eneprog.blogspot.com/2018/09/4-wordcloudpythonjanome.html>`_ (ユーザー辞書の活用例)
@@ -263,7 +263,7 @@ Analyzer を初期化したら，analyze() メソッドに解析したい文字�
   >>> a = Analyzer(char_filters=char_filters, tokenizer=tokenizer, token_filters=token_filters)
   >>> for token in a.analyze(text):
   ...     print(token)
-  ... 
+  ...
   janome  名詞,固有名詞,組織,*,*,*,*,*,*
   pure    名詞,固有名詞,組織,*,*,*,*,*,*
   python  名詞,一般,*,*,*,*,*,*,*
@@ -433,7 +433,7 @@ Windows
 
 ``-g`` オプションをつけると，解析後にラティスグラフがファイルに出力されます。デフォルトの出力先はカレントディレクトリ，フォーマットは PNG です。
 
-:: 
+::
 
     $ echo "カレーは飲み物" | janome -g
     カレー	名詞,一般,*,*,*,*,カレー,カレー,カレー
@@ -448,7 +448,7 @@ lattice.gv.png (クリックで拡大)
 
 ファイルの出力先を指定したい場合は ``--gv-out`` オプションを，Graphviz のフォーマットを指定する場合は ``--gv-format`` オプションをつけてください。サポートされるフォーマットは `Graphviz のドキュメント <https://graphviz.gitlab.io/_pages/doc/info/output.html>`_ を参照してください。
 
-:: 
+::
 
     $ echo "カレーは飲み物" | janome -g --gv-out /tmp/a.gv --gv-format svg
     ...
@@ -468,21 +468,21 @@ Tokenizer 初期化時に ``mmap=False`` オプションをつけてください
     (venv) $ pyinstaller -v
     3.4
 
-    (venv) $ cat test.py 
+    (venv) $ cat test.py
     # -*- utf-8
     from janome.tokenizer import Tokenizer
     t = Tokenizer(mmap=False)
         for token in t.tokenize('令和元年'):
         print(token)
 
-    (venv) $ pyinstaller --onefile test.py 
+    (venv) $ pyinstaller --onefile test.py
     44 INFO: PyInstaller: 3.4
     44 INFO: Python: 3.6.6
     ...
 
     (venv) $ ls dist/
     test
-    (venv) $ ./dist/test 
+    (venv) $ ./dist/test
     令和	名詞,固有名詞,一般,*,*,*,令和,レイワ,レイワ
     元年	名詞,一般,*,*,*,*,元年,ガンネン,ガンネン
 
@@ -567,7 +567,7 @@ History
 * 2017.08.06 janome Version 0.3.5 released
 * 2017.07.29 janome Version 0.3.4 released
 * 2017.07.23 janome Version 0.3.3 released
-* 2017.07.05 janome Version 0.3.2 released 
+* 2017.07.05 janome Version 0.3.2 released
 * 2017.07.02 janome Version 0.3.1 released
 * 2017.06.30 janome Version 0.3.0 released
 * 2016.05.07 janome Version 0.2.8 released

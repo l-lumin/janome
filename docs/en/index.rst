@@ -44,7 +44,7 @@ API reference
 Requirements
 ------------
 
-Python 3.7+ interpreter
+Python 3.10+ interpreter
 
 Latest version
 --------------
@@ -194,7 +194,7 @@ How to compile user dictionary (MeCab IPADIC format): ::
   Running create_minimum_transducer: 100.0% | 17149/17149
   >>> user_dict.save("/tmp/userdic")
 
-How to compile user dictionary (simplified format): ::  
+How to compile user dictionary (simplified format): ::
 
   >>> from janome.dic import UserDictionary
   >>> from janome import sysdic
@@ -237,7 +237,7 @@ Analyzser usage
   >>> a = Analyzer(char_filters=char_filters, tokenizer=tokenizer, token_filters=token_filters)
   >>> for token in a.analyze(text):
   ...     print(token)
-  ... 
+  ...
   janome  名詞,固有名詞,組織,*,*,*,*,*,*
   pure    名詞,固有名詞,組織,*,*,*,*,*,*
   python  名詞,一般,*,*,*,*,*,*,*
@@ -368,14 +368,14 @@ Use ``-e sjis`` option if the output is garbled.
 Visualizing lattice graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: 
+.. note::
 
   You need Graphviz to use this functionality. Please install Graphviz from `here <https://graphviz.gitlab.io/download/>`_.
 
 
 If given ``-g`` option, janome command outputs the visualized lattice image to the current directory after analyzing the text. Default output format is PNG.
 
-:: 
+::
 
     $ echo "カレーは飲み物" | janome -g
     カレー	名詞,一般,*,*,*,*,カレー,カレー,カレー
@@ -390,7 +390,7 @@ lattice.gv.png (Click to show the full size image.)
 
 You can change the output file location by using ``--gv-out`` option. Also you can specify the output file format by ``--gv-format`` option. See `Graphviz documentation <https://graphviz.gitlab.io/_pages/doc/info/output.html>`_ for all supported output formats.
 
-:: 
+::
 
     $ echo "カレーは飲み物" | janome -g --gv-out /tmp/a.gv --gv-format svg
     ...
@@ -411,21 +411,21 @@ You can create (and distribute) stand-alone executables which bundle janome by `
     (venv) $ pyinstaller -v
     3.4
 
-    (venv) $ cat test.py 
+    (venv) $ cat test.py
     # -*- utf-8
     from janome.tokenizer import Tokenizer
     t = Tokenizer(mmap=False)
         for token in t.tokenize('令和元年'):
         print(token)
 
-    (venv) $ pyinstaller --onefile test.py 
+    (venv) $ pyinstaller --onefile test.py
     44 INFO: PyInstaller: 3.4
     44 INFO: Python: 3.6.6
     ...
 
     (venv) $ ls dist/
     test
-    (venv) $ ./dist/test 
+    (venv) $ ./dist/test
     令和	名詞,固有名詞,一般,*,*,*,令和,レイワ,レイワ
     元年	名詞,一般,*,*,*,*,元年,ガンネン,ガンネン
 
@@ -486,7 +486,7 @@ History
 * 2017.08.06 janome Version 0.3.5 released
 * 2017.07.29 janome Version 0.3.4 released
 * 2017.07.23 janome Version 0.3.3 released
-* 2017.07.05 janome Version 0.3.2 released 
+* 2017.07.05 janome Version 0.3.2 released
 * 2017.07.02 janome Version 0.3.1 released
 * 2017.06.30 janome Version 0.3.0 released
 * 2016.05.07 janome Version 0.2.8 released
