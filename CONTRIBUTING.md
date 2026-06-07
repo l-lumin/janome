@@ -6,10 +6,7 @@ Steps to contribute
 2. Set up virtualenv for development.
 
   ```
-  $ python -m venv .venv
-  $ . .venv/bin/activate
-  (.venv) $ pip install -r requirements-dev.txt
-  (.venv) $ pip install -e .
+  $ uv sync
   ```
 
 3. (Optional) Build and validate the built-in dictionary.
@@ -35,9 +32,9 @@ Steps to contribute
 
   ```
   $ cd janome  // change directory to janome root
-  $ python -m unittest discover tests/
-  $ python -m flake8 janome/
-  $ python -m mypy janome/*.py
+  $ uv run python -m unittest discover tests/
+  $ uv run python -m flake8 src/janome/
+  $ uv run python -m mypy src/janome/
   ```
 
 5. Once the branch passes all tests :100: , create a pull request :)
