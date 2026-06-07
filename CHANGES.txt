@@ -1,5 +1,5 @@
 * 0.5.1 (yyyy.mm.dd)
-  - 
+  - #132: Switch to pyproject.toml from setup.py (@l-lumin)
 
 * 0.5.0 (2023.07.01)
   - #116: Add WordStopFilter and WordKeepFilter. (@mocobeta)
@@ -88,7 +88,7 @@
     (thanks @ikawaha)
   - Fix typo. #23
     (thanks @kamatari)
-    
+
 * 0.2.7 (2016.03.05)
   - Add kuromoji-like simplified user dictionary.
   - (Python 2.7 only) Return unicode instead of str for properties such as part_of_speech, reading. #21
@@ -101,7 +101,7 @@
   - Reduce memory usage for creating Node and State objects by __slots__.
     (thanks @atsuoishimoto)
   - Minor refactoring.
- 
+
 * 0.2.5 (2015.05.11)
   - Re-implement lru cache for Matcher.run()
   - Optimize unknown words processing.
